@@ -1,9 +1,9 @@
 
 import React from 'react';
 import { Container, Navbar, Nav } from 'react-bootstrap';
-import Skills from './AAA/Skills';
-import Projects from './AAA/Projects';
-import Contact from './AAA/Contact';
+import Skills from './components/Skills';
+import Projects from './components/Projects';
+import Contact from './components/Contact';
 
 function App() {
   return (
@@ -14,9 +14,9 @@ function App() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
-              <Nav.Link href="#skills">Habilidades</Nav.Link>
-              <Nav.Link href="#projects">Proyectos</Nav.Link>
-              <Nav.Link href="#contact">Contacto</Nav.Link>
+              <Nav.Link href="#skills">Skills</Nav.Link>
+              <Nav.Link href="#projects">Projects</Nav.Link>
+              <Nav.Link href="#contact">Contact</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

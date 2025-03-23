@@ -13,7 +13,7 @@ const projects = [
 function Projects() {
   return (
     <Container id="projects" className="mb-4">
-      <h2 className="text-center mb-3">Proyectos Destacados</h2>
+      <h2 className="text-center mb-3">Featured Projects</h2>
       <Row className="justify-content-center">
         {projects.map((project, index) => (
           <Col key={index} md={4} className="mb-3">
@@ -22,7 +22,7 @@ function Projects() {
                 <Card.Title>{project.name}</Card.Title>
                 <Card.Text>{project.description}</Card.Text>
                 <Button variant="primary" href={project.link} target="_blank">
-                  Ver Proyecto
+                  View Project
                 </Button>
               </Card.Body>
             </Card>
