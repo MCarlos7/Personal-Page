@@ -19,9 +19,6 @@ const skills = [
 function Skills() {
   const skillsContainerRef = useRef(null);
 
-  // Duplicar los íconos para crear un efecto infinito
-  const duplicatedSkills = [...skills, ...skills];
-
   // Maneja el desplazamiento con la rueda del ratón
   useEffect(() => {
     const container = skillsContainerRef.current;
@@ -73,36 +70,13 @@ function Skills() {
     };
   }, []);
 
-  // Efecto para hacer el carrusel infinito
-  useEffect(() => {
-    const container = skillsContainerRef.current;
-    if (!container) return;
-
-    const handleScroll = () => {
-      const { scrollLeft, scrollWidth, clientWidth } = container;
-      if (scrollLeft === 0) {
-        // Si el usuario llega al inicio, desplázate al centro (mitad del contenido duplicado)
-        container.scrollTo({ left: scrollWidth / 2, behavior: 'auto' });
-      } else if (scrollLeft + clientWidth >= scrollWidth) {
-        // Si el usuario llega al final, desplázate al centro (mitad del contenido duplicado)
-        container.scrollTo({ left: scrollWidth / 2 - clientWidth, behavior: 'auto' });
-      }
-    };
-
-    container.addEventListener('scroll', handleScroll);
-
-    return () => {
-      container.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
   return (
     <Container id="skills" className="mb-4">
       <h2 className="text-center mb-3">Tech Stack</h2>
       <Card className="p-3">
         <div className="skills-carousel" ref={skillsContainerRef}>
           <div className="skills-container">
-            {duplicatedSkills.map((skill, index) => (
+            {skills.map((skill, index) => (
               <div key={index} className="skill-item">
                 <div className="skill-icon">{skill.icon}</div>
                 <div className="skill-name">{skill.name}</div>

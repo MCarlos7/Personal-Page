@@ -1,10 +1,21 @@
 /* Contenedor del carrusel */
 .skills-carousel {
-    overflow-x: hidden; /* Oculta la barra de scroll */
-    display: flex;
+    overflow-x: auto; /* Permite el desplazamiento horizontal */
+    scroll-snap-type: x mandatory; /* Fuerza el desplazamiento a "snap" en cada elemento */
     scroll-behavior: smooth; /* Desplazamiento suave */
-    position: relative;
+    display: flex;
     padding: 10px 0;
+    position: relative;
+  }
+  
+  /* Ocultar la barra de scroll */
+  .skills-carousel::-webkit-scrollbar {
+    display: none; /* Oculta la barra de scroll en navegadores WebKit */
+  }
+  
+  .skills-carousel {
+    -ms-overflow-style: none; /* Oculta la barra de scroll en IE y Edge */
+    scrollbar-width: none; /* Oculta la barra de scroll en Firefox */
   }
   
   /* Contenedor de los íconos */
@@ -24,6 +35,7 @@
     flex: 0 0 auto; /* Evita que los elementos se estiren */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
+    scroll-snap-align: start; /* Ajusta el desplazamiento a cada elemento */
   }
   
   /* Efecto al pasar el ratón */
