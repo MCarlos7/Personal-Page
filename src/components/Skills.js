@@ -19,54 +19,49 @@ const skills = [
 function Skills() {
   const skillsContainerRef = useRef(null);
 
-  // Maneja el desplazamiento con la rueda del ratón
   useEffect(() => {
     const container = skillsContainerRef.current;
     if (!container) return;
 
     const handleWheel = (event) => {
       event.preventDefault();
-      const scrollAmount = event.deltaY > 0 ? 200 : -200; // Ajusta la cantidad de desplazamiento
-      container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      container.scrollBy({ left: event.deltaY * 0.5, behavior: 'smooth' });
+    };
+
+    let isDragging = false;
+    let startX;
+    let scrollLeft;
+
+    const handleMouseDown = (event) => {
+      isDragging = true;
+      startX = event.pageX - container.offsetLeft;
+      scrollLeft = container.scrollLeft;
+    };
+
+    const handleMouseMove = (event) => {
+      if (!isDragging) return;
+      event.preventDefault();
+      const x = event.pageX - container.offsetLeft;
+      const walk = (x - startX) * 2;
+      container.scrollLeft = scrollLeft - walk;
+    };
+
+    const handleMouseUp = () => {
+      isDragging = false;
     };
 
     container.addEventListener('wheel', handleWheel, { passive: false });
+    container.addEventListener('mousedown', handleMouseDown);
+    container.addEventListener('mousemove', handleMouseMove);
+    container.addEventListener('mouseleave', handleMouseUp);
+    container.addEventListener('mouseup', handleMouseUp);
 
     return () => {
       container.removeEventListener('wheel', handleWheel);
-    };
-  }, []);
-
-  // Maneja el desplazamiento táctil
-  useEffect(() => {
-    const container = skillsContainerRef.current;
-    if (!container) return;
-
-    let startX = 0;
-
-    const handleTouchStart = (event) => {
-      startX = event.touches[0].clientX;
-    };
-
-    const handleTouchEnd = (event) => {
-      const endX = event.changedTouches[0].clientX;
-      const deltaX = startX - endX;
-
-      if (deltaX > 50) {
-        // Deslizamiento hacia la izquierda (siguiente)
-        container.scrollBy({ left: 200, behavior: 'smooth' });
-      } else if (deltaX < -50) {
-        // Deslizamiento hacia la derecha (anterior)
-        container.scrollBy({ left: -200, behavior: 'smooth' });
-      }
-    };
-
-    container.addEventListener('touchstart', handleTouchStart);
-    container.addEventListener('touchend', handleTouchEnd);
-
-    return () => {
-      container.removeEventListener('touchstart', handleTouchStart);
-      container.removeEventListener('touchend', handleTouchEnd);
+      container.removeEventListener('mousedown', handleMouseDown);
+      container.removeEventListener('mousemove', handleMouseMove);
+      container.removeEventListener('mouseleave', handleMouseUp);
+      container.removeEventListener('mouseup', handleMouseUp);
     };
   }, []);
 
