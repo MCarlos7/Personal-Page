@@ -1,5 +1,5 @@
 import React, { useEffect,useRef } from 'react';
-import '../styles/pincel.css';
+import '../styles/Brush.css';
 
 const Pincel = ({ x, y }) => {
     useEffect(() => {

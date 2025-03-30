@@ -3,16 +3,18 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  color: rgb(214, 214, 214);
+  background-color: var(--bg-header-footer); 
+  color: var(--text-header-footer); 
 }
 
 h1 {
   font-size: 36px;
+  color: var(--text-primary); 
 }
 
 .skills-section, .projects-section {
   margin: 20px 0;
+  color: var(--text-primary); 
 }
 
 ul {
@@ -21,9 +23,10 @@ ul {
 
 ul li {
   font-size: 18px;
+  color: var(--text-primary); 
 }
 
 footer {
-  background-color: #f8f9fa;
-  color: #343a40;
+  background-color: var(--bg-header-footer); 
+  color: var(--text-header-footer); 
 }

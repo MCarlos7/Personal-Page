@@ -1,78 +1,78 @@
-/* Contenedor del carrusel */
 .skills-carousel {
-    overflow-x: auto; /* Permite el desplazamiento horizontal */
-    scroll-snap-type: x mandatory; /* Fuerza el desplazamiento a "snap" en cada elemento */
-    scroll-behavior: smooth; /* Desplazamiento suave */
-    display: flex;
-    padding: 10px 0;
-    position: relative;
-  }
-  
-  /* Ocultar la barra de scroll */
-  .skills-carousel::-webkit-scrollbar {
-    display: none; /* Oculta la barra de scroll en navegadores WebKit */
-  }
-  
-  .skills-carousel {
-    -ms-overflow-style: none; /* Oculta la barra de scroll en IE y Edge */
-    scrollbar-width: none; /* Oculta la barra de scroll en Firefox */
-  }
-  
-  /* Contenedor de los íconos */
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  display: flex;
+  padding: 10px 0;
+  position: relative;
+  background-color: var(--bg-primary); 
+  color: var(--text-primary);
+}
+
+
+.skills-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.skills-carousel {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+
+.skills-container {
+  display: flex;
+  gap: 30px;
+  padding: 0 20px;
+}
+
+
+.skill-item {
+  text-align: center;
+  padding: 20px;
+  border-radius: 15px;
+  background-color: var(--clr-lightest); 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  flex: 0 0 auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  scroll-snap-align: start;
+}
+
+.skill-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+
+.skill-icon {
+  transition: transform 0.3s ease;
+  margin-bottom: 10px;
+  color: var(--link-color); 
+}
+
+
+.skill-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--text-primary); 
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
   .skills-container {
-    display: flex;
-    gap: 30px; /* Espacio entre elementos */
-    padding: 0 20px;
+    gap: 15px;
   }
-  
-  /* Estilos para cada skill */
+
   .skill-item {
-    text-align: center;
-    padding: 20px;
-    border-radius: 15px;
-    background-color: #ffffff; /* Fondo blanco */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
-    flex: 0 0 auto; /* Evita que los elementos se estiren */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-    scroll-snap-align: start; /* Ajusta el desplazamiento a cada elemento */
+    padding: 15px;
   }
-  
-  /* Efecto al pasar el ratón */
-  .skill-item:hover {
-    transform: translateY(-10px); /* Eleva el elemento */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
-  }
-  
-  /* Estilos para el ícono */
+
   .skill-icon {
-    transition: transform 0.3s ease;
-    margin-bottom: 10px;
-    color: #007bff; /* Color azul para los íconos */
+    font-size: 40px;
   }
-  
-  /* Estilos para el nombre */
+
   .skill-name {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #333; /* Color de texto oscuro */
+    font-size: 1rem;
   }
-  
-  /* Responsive design */
-  @media (max-width: 768px) {
-    .skills-container {
-      gap: 15px; /* Menor espacio en dispositivos móviles */
-    }
-  
-    .skill-item {
-      padding: 15px;
-    }
-  
-    .skill-icon {
-      font-size: 40px; /* Íconos más pequeños en móviles */
-    }
-  
-    .skill-name {
-      font-size: 1rem; /* Texto más pequeño en móviles */
-    }
-  }
+}

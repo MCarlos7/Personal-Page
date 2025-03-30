@@ -10,7 +10,7 @@ function Contact() {
           <strong>Email:</strong> cmariscal102@gmail.com
         </ListGroup.Item>
         <ListGroup.Item>
-          <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/carlos" target="_blank" rel="noopener noreferrer">linkedin.com/in/carlos</a>
+          <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/mcarlos7" target="_blank" rel="noopener noreferrer">linkedin.com/in/mcarlos7</a>
         </ListGroup.Item>
         <ListGroup.Item>
           <strong>GitHub:</strong> <a href="https://github.com/MCarlos7" target="_blank" rel="noopener noreferrer">github.com/MCarlos7</a>

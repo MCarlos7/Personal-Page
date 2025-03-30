@@ -1,0 +1,47 @@
+:root {
+    /* Tema claro (default) */
+    --bs-body-bg: #ffffff;
+    --bs-body-color: #212529;
+    --primary-color: #4e73df;
+    --secondary-color: #858796;
+    --accent-color: #f8f9fc;
+    --text-primary: #5a5c69;
+  }
+  
+  [data-theme="dark"] {
+    --bs-body-bg: #1a1a2e;
+    --bs-body-color: #e6e6e6;
+    --primary-color: #0f3460;
+    --secondary-color: #16213e;
+    --accent-color: #1f1f1f;
+    --text-primary: #f8f9fa;
+  }
+  
+  [data-theme="corporate"] {
+    --bs-body-bg: #120300;
+    --bs-body-color: #1e2605;
+    --primary-color: #95794d;
+    --secondary-color: #b5af83;
+    --accent-color: #efefe3;
+    --text-primary: #1e2605;
+  }
+  
+  /* Aplica las variables a los componentes de Bootstrap */
+  body {
+    background-color: var(--bs-body-bg);
+    color: var(--bs-body-color);
+    transition: all 0.3s ease;
+  }
+  
+  .bg-primary {
+    background-color: var(--primary-color) !important;
+  }
+  
+  .text-primary {
+    color: var(--primary-color) !important;
+  }
+  
+  .btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+  }
