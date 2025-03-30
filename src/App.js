@@ -1,14 +1,29 @@
-
-import React from 'react';
-import { Container, Navbar, Nav } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import { Container } from 'react-bootstrap';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Home from './components/Home';
+import Pincelada from './components/pincel'; // Importa el componente Pincelada
 
 function App() {
+  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      setCursorPos({ x: e.clientX, y: e.clientY });
+    };
+
+    document.addEventListener('mousemove', handleMouseMove);
+
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
+
   return (
     <>
+      <Pincelada x={cursorPos.x} y={cursorPos.y} /> {/* Agrega el componente Pincelada */}
       <Home />
       <div style={{ marginBottom: '100px' }}></div>
       <Container>
@@ -26,4 +41,4 @@ function App() {
   );
 }
 
-export default App
+export default App;
