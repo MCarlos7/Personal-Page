@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'; 
 import { Form } from 'react-bootstrap';
+import "../styles/themes.css";
 
 const ThemeSwitcher = () => {
   const [currentTheme, setCurrentTheme] = useState(() => {
@@ -10,10 +11,15 @@ const ThemeSwitcher = () => {
   });
 
   const themes = [
-    { value: 'light', label: '🌞 Claro' },
-    { value: 'dark', label: '🌙 Oscuro' },
-    { value: 'corporate', label: '🏢 Corporativo' },
-    // Agrega más temas aquí
+    { value: 'light', icon: '☀️' },  // Tema claro
+    { value: 'dark', icon: '🌙' },    // Tema oscuro
+    { value: 'corporate', icon: '🏢' }, // Tema corporativo
+    { value: 'solarized-light', icon: '🌞' },  // Tema Solarized Light
+    { value: 'solarized-dark', icon: '🌙' },  // Tema Solarized Dark
+    { value: 'neon', icon: '💡' },  // Tema Neon
+    { value: 'ocean-blue', icon: '🌊' }, // Tema Ocean Blue
+    { value: 'forest-green', icon: '🌲' }, // Tema Forest Green
+    { value: 'pastel', icon: '🌸' }  // Tema Pastel
   ];
 
   useEffect(() => {
@@ -26,18 +32,20 @@ const ThemeSwitcher = () => {
   }, [currentTheme]);
 
   return (
-    <Form.Select 
-      aria-label="Selector de tema"
-      value={currentTheme}
-      onChange={(e) => setCurrentTheme(e.target.value)}
-      className="w-auto"
-    >
-      {themes.map((theme) => (
-        <option key={theme.value} value={theme.value}>
-          {theme.label}
-        </option>
-      ))}
-    </Form.Select>
+    <div className="theme-switcher">
+      <Form.Select 
+        aria-label="Selector de tema"
+        value={currentTheme}
+        onChange={(e) => setCurrentTheme(e.target.value)}
+        className="theme-select"
+      >
+        {themes.map((theme) => (
+          <option key={theme.value} value={theme.value}>
+            {theme.icon}  {/* Usamos el ícono en lugar de texto */}
+          </option>
+        ))}
+      </Form.Select>
+    </div>
   );
 };
 

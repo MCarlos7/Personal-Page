@@ -4,12 +4,12 @@ import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Home from './components/Home';
-import Pincelada from './components/Brush';
-import Sidebar from "./components/sidebar";  // Sidebar con el ThemeSwitcher
+import Sidebar from "./components/sidebar";  
 import './index.css';
 
 function App() {
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -23,13 +23,17 @@ function App() {
     };
   }, []);
 
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    document.body.setAttribute('data-bs-theme', theme);
+  }, [theme]);
+
   return (
     <>
-      <Pincelada x={cursorPos.x} y={cursorPos.y} />
-      <Sidebar />  {}
+      <Sidebar setTheme={setTheme} /> 
       <div style={{ marginLeft: "0px" }}>
         <Home id="home" />
-        <Container>
+        <Container className="main-container">
           <header className="text-center mb-4">
             <h1 className="display-4">Carlos Alberto Mariscal Romo</h1>
             <p className="lead">
