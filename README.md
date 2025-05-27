@@ -1,23 +1,22 @@
 # Personal Page
 
-Mi sitio web personal desarrollado con **React**. Aquí muestro información sobre mí, mis proyectos, habilidades y formas de contacto. Ideal para portafolios y presentación profesional.
+My personal website developed with **React**. It showcases information about me, my projects, skills, and ways to get in touch. Ideal for portfolios and professional presentation.
 
-[Ver demo en línea](https://mcarlos7.github.io/Personal-Page/) <!-- Reemplaza con el enlace si está desplegado -->
+[View live demo](https://mcarlos7.github.io/Personal-Page/) <!-- Replace with the actual deployed link -->
 
 ---
 
-## Tecnologías
+## Technologies
 
 - React (Create React App)
-- HTML, CSS y JavaScript
-- Bootstrap / Tailwind <!-- Edita según lo que uses -->
-- Librerías adicionales (si aplica)
+- HTML, CSS, and JavaScript
+- Bootstrap / Tailwind 
 
 ---
 
-## Scripts disponibles
+## Available Scripts
 
-En el directorio del proyecto puedes ejecutar:
+In the project directory, you can run:
 
 ```bash
 npm start
