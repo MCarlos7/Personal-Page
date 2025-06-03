@@ -1,51 +1,50 @@
 import React, { useState, useEffect } from 'react';
-import { Container } from 'react-bootstrap';
+import Sidebar from './components/Sidebar';
+import About from './components/About';
+import Home from './components/Home';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
-import Home from './components/Home';
-import Sidebar from "./components/sidebar";  
-import './index.css';
+import './styles/App.css';
+
+const components = [Home, About, Skills, Projects, Contact];
 
 function App() {
-  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
-  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
-
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      setCursorPos({ x: e.clientX, y: e.clientY });
-    };
-
-    document.addEventListener('mousemove', handleMouseMove);
-
-    return () => {
-      document.removeEventListener('mousemove', handleMouseMove);
-    };
-  }, []);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'light');
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
-    document.body.setAttribute('data-bs-theme', theme);
+    localStorage.setItem('theme', theme);
   }, [theme]);
 
+  const handleScroll = (e) => {
+    e.preventDefault();
+    const direction = e.deltaY > 0 ? 1 : -1;
+    setActiveIndex(prev => {
+      let next = prev + direction;
+      if (next < 0) next = 0;
+      if (next >= components.length) next = components.length - 1;
+      return next;
+    });
+  };
+
+  useEffect(() => {
+    window.addEventListener('wheel', handleScroll, { passive: false });
+    return () => window.removeEventListener('wheel', handleScroll);
+  }, []);
+
+  const ActiveComponent = components[activeIndex];
+
   return (
-    <>
-      <Sidebar setTheme={setTheme} /> 
-      <div style={{ marginLeft: "0px" }}>
-        <Home id="home" />
-        <Container className="main-container">
-          <header className="text-center mb-4">
-            <h1 className="display-4">Carlos Alberto Mariscal Romo</h1>
-            <p className="lead">
-              I'm studying at the Centro Universitario de Ciencias Exactas e Ingenierías (CUCEI). I am passionate about video game development, programming, and technology in general.
-            </p>
-          </header>
-          <Skills id="about" />
-          <Projects id="projects" />
-          <Contact id="contact" />
-        </Container>
+    <div className="app-container">
+      <Sidebar setActiveIndex={setActiveIndex} theme={theme} setTheme={setTheme} />
+      <div className="main-section">
+        <div key={activeIndex} className="fade-section">
+          <ActiveComponent />
+        </div>
       </div>
-    </>
+    </div>
   );
 }
 

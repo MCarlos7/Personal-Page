@@ -1,0 +1,67 @@
+/* styles/Projects.css */
+
+.project-card {
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.project-card:hover,
+.project-card:focus {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.18);
+  outline: none;
+}
+
+.project-card:focus-visible {
+  outline: 2px solid var(--accent-color, #007bff); 
+  outline-offset: 4px;
+}
+
+.project-card .card-body {
+  padding: 1.5rem 1.5rem 1rem 1.5rem;
+}
+
+.project-card .card-title {
+  font-size: 1.4rem;
+  color: #222;
+}
+
+.project-card .card-text {
+  color: #555;
+  font-size: 1rem;
+  line-height: 1.5;
+  min-height: 80px;
+}
+
+.project-card .card-footer {
+  background-color: transparent;
+  border-top: none;
+  padding-top: 0.5rem;
+}
+
+.project-button {
+  border-radius: 25px;
+  padding: 0.25rem 1rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.project-button:hover,
+.project-button:focus {
+  background-color: var(--accent-color, #007bff);
+  color: white;
+  border-color: #0d6efd;
+  outline: none;
+  box-shadow: 0 0 8px var(--accent-color, #007bff);
+}
+
+/* Responsive tweaks */
+@media (max-width: 576px) {
+  .project-card {
+    margin: 0 auto;
+    max-width: 90vw;
+  }
+}

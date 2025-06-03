@@ -1,0 +1,17 @@
+.contact-list .contact-link {
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-list .contact-link:hover,
+.contact-list .contact-link:focus {
+  color: #0056b3;
+  text-decoration: underline;
+  outline: none;
+}
+
+.contact-list strong {
+  min-width: 70px;
+  display: inline-block;
+}

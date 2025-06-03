@@ -1,61 +1,51 @@
-import React, { useState } from "react";
-import { Nav } from "react-bootstrap";
-import { AiOutlineHome, AiOutlineUser, AiOutlineProject, AiOutlineMail, AiOutlineSetting, AiOutlineMenu } from "react-icons/ai";
-import "../styles/Sidebar.css";
-import ThemeSwitcher from "./ThemeSwitcher";
+import React, { useState } from 'react';
+import '../styles/Sidebar.css';
+import { FaHome, FaUserAlt, FaTools, FaProjectDiagram, FaEnvelope, FaMoon, FaSun, FaFilePdf } from 'react-icons/fa';
 
-const Sidebar = () => {
-  const [expanded, setExpanded] = useState(false);
+function Sidebar({ setActiveIndex }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'light');
 
-  // Función para alternar la expansión del sidebar
-  const toggleSidebar = () => setExpanded(!expanded);
+  const toggleSidebar = () => {
+    setIsOpen(!isOpen);
+  };
 
-  const scrollToSection = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
+  const handleNavigate = (index) => {
+    setActiveIndex(index);
+    setIsOpen(false);
+  };
+
+  const toggleTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
   };
 
   return (
-    <div className={`sidebar ${expanded ? 'expanded' : ''}`}>
-      {/* Botón de hamburguesa visible solo en dispositivos móviles */}
-      <button className="menu-toggle" onClick={toggleSidebar}>
-        <AiOutlineMenu size={28} />
-      </button>
+    <>
+      <button className="hamburger" onClick={toggleSidebar}>☰</button>
+      <nav className={`sidebar ${isOpen ? 'open' : ''}`}>
+        <ul className="nav-links">
+          <li onClick={() => handleNavigate(0)}><FaHome /> <span>Home</span></li>
+          <li onClick={() => handleNavigate(1)}><FaUserAlt /> <span>About Me</span></li>
+          <li onClick={() => handleNavigate(2)}><FaTools /> <span>TechStack</span></li>
+          <li onClick={() => handleNavigate(3)}><FaProjectDiagram /> <span>Proyects</span></li>
+          <li onClick={() => handleNavigate(4)}><FaEnvelope /> <span>Contact</span></li>
+        </ul>
 
-      <Nav className="flex-column">
-        <Nav.Link onClick={() => scrollToSection("home")} title="Inicio">
-          <AiOutlineHome size={28} />
-          {expanded && <span className="text">Inicio</span>}
-        </Nav.Link>
-        <Nav.Link onClick={() => scrollToSection("about")} title="Sobre mí">
-          <AiOutlineUser size={28} />
-          {expanded && <span className="text">Sobre mí</span>}
-        </Nav.Link>
-        <Nav.Link onClick={() => scrollToSection("projects")} title="Proyectos">
-          <AiOutlineProject size={28} />
-          {expanded && <span className="text">Proyectos</span>}
-        </Nav.Link>
-        <Nav.Link onClick={() => scrollToSection("contact")} title="Contacto">
-          <AiOutlineMail size={28} />
-          {expanded && <span className="text">Contacto</span>}
-        </Nav.Link>
-        <Nav.Link onClick={() => scrollToSection("settings")} title="Configuración">
-          <AiOutlineSetting size={28} />
-          {expanded && <span className="text">Configuración</span>}
-        </Nav.Link>
-      </Nav>
-
-      {/* ThemeSwitcher solo se muestra si el sidebar está expandido */}
-      <div className="theme-switcher-container">
-        <ThemeSwitcher />
-      </div>
-    </div>
+        <div className="bottom-controls">
+          <button className="theme-toggle" onClick={toggleTheme}>
+            {theme === 'light' ? <FaMoon /> : <FaSun />}
+            <span>{theme === 'light' ? 'Dark Mode' : 'Light Mode'}</span>
+          </button>
+          <button className="cv-button" onClick={() => window.open('/CV_CarlosMariscal.pdf', '_blank')}>
+            <FaFilePdf /> <span>CV</span>
+          </button>
+        </div>
+      </nav>
+    </>
   );
-};
+}
 
 export default Sidebar;
