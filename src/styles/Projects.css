@@ -1,67 +1,124 @@
 /* styles/Projects.css */
-
-.project-card {
-  border-radius: 12px;
-  background: #fff;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
+#projects {
+  --card-radius: 12px;
+  --card-padding: 1.5rem;
+  --hover-elevation: 8px;
+  --transition-time: 0.3s;
+  
+  overflow-y: auto;
+  padding-right: 15px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: 
+    background-color var(--transition-time), 
+    color var(--transition-time);
 }
 
+/* Sobrescritura de variables BS para cards */
+.project-card {
+  --bs-card-bg: var(--card-bg-color) !important;
+  --bs-card-border-color: rgba(0, 0, 0, 0.1);
+  --bs-card-border-radius: var(--card-radius);
+  --bs-card-color: var(--text-color);
+  
+  border-radius: var(--card-radius);
+  background-color: var(--card-bg-color);
+  color: var(--text-color);
+  border: 1px solid transparent;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  transition: 
+    transform var(--transition-time) ease, 
+    box-shadow var(--transition-time) ease, 
+    background-color var(--transition-time), 
+    color var(--transition-time);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+[data-theme="dark"] .project-card {
+  --bs-card-border-color: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Card Interactions */
 .project-card:hover,
-.project-card:focus {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.18);
+.project-card:focus-within {
+  transform: translateY(calc(-1 * var(--hover-elevation)));
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+  background-color: var(--card-hover-bg);
   outline: none;
 }
 
+/* Sobrescritura de bg-white */
+.project-card .bg-white {
+  --bs-bg-opacity: 1;
+  background-color: var(--card-bg-color) !important;
+}
+
+/* Sobrescritura de text-muted */
+.project-card .text-muted {
+  --bs-text-opacity: 1;
+  color: var(--text-color) !important;
+  opacity: 0.7;
+}
+
+/* Resto de tus estilos... */
 .project-card:focus-visible {
-  outline: 2px solid var(--accent-color, #007bff); 
+  outline: 2px solid var(--accent-color);
   outline-offset: 4px;
 }
 
 .project-card .card-body {
-  padding: 1.5rem 1.5rem 1rem 1.5rem;
+  padding: var(--card-padding);
+  padding-bottom: 1rem;
 }
 
 .project-card .card-title {
   font-size: 1.4rem;
-  color: #222;
+  color: var(--text-color);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
 }
 
 .project-card .card-text {
-  color: #555;
+  color: var(--text-color);
+  opacity: 0.9;
   font-size: 1rem;
   line-height: 1.5;
   min-height: 80px;
 }
 
 .project-card .card-footer {
-  background-color: transparent;
-  border-top: none;
-  padding-top: 0.5rem;
+  background-color: var(--card-bg-color);
+  border-top: 1px solid;
+  border-color: inherit;
+  padding: 0.5rem var(--card-padding) 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.project-button {
-  border-radius: 25px;
-  padding: 0.25rem 1rem;
+.project-card .btn-outline-primary {
+  --btn-radius: 25px;
+  --btn-padding: 0.25rem 1rem;
+  
+  border-radius: var(--btn-radius);
+  padding: var(--btn-padding);
   font-weight: 600;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  color: var(--accent-color);
+  border: 1px solid var(--accent-color);
+  background-color: transparent;
+  transition: 
+    background-color var(--transition-time) ease, 
+    color var(--transition-time) ease, 
+    box-shadow var(--transition-time) ease;
 }
 
-.project-button:hover,
-.project-button:focus {
-  background-color: var(--accent-color, #007bff);
+.project-card .btn-outline-primary:hover,
+.project-card .btn-outline-primary:focus {
+  background-color: var(--accent-color);
   color: white;
-  border-color: #0d6efd;
+  box-shadow: 0 0 8px var(--accent-color);
   outline: none;
-  box-shadow: 0 0 8px var(--accent-color, #007bff);
-}
-
-/* Responsive tweaks */
-@media (max-width: 576px) {
-  .project-card {
-    margin: 0 auto;
-    max-width: 90vw;
-  }
 }

@@ -68,17 +68,26 @@ body {
 }
 
 
+.sidebar {
+  width: 250px; 
+}
 
 .main-section {
   flex: 1;
-  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   overflow: hidden;
+  position: relative;
 }
 
 .fade-section {
   animation: fadeInFromBack 0.8s ease forwards;
   height: 100%;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   background-color: var(--background-color);
   color: var(--text-color);

@@ -1,17 +1,39 @@
-.contact-list .contact-link {
-  color: #007bff;
+/* styles/Contact.css */
+#contact {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.contact-list {
+  background-color: transparent;
+}
+
+.contact-list .list-group-item {
+  background-color: var(--card-bg-color);
+  color: var(--text-color);
+  border: none;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.contact-list .list-group-item:hover {
+  background-color: var(--card-hover-bg);
+}
+
+.contact-link {
+  color: var(--accent-color);
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: color 0.2s ease;
 }
 
-.contact-list .contact-link:hover,
-.contact-list .contact-link:focus {
-  color: #0056b3;
+.contact-link:hover,
+.contact-link:focus {
   text-decoration: underline;
-  outline: none;
+  color: var(--accent-color);
 }
 
-.contact-list strong {
-  min-width: 70px;
-  display: inline-block;
+#contact p {
+  color: var(--text-muted-color);
 }

@@ -1,9 +1,20 @@
+#skills {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
 .skills-card {
   border-radius: 12px;
-  background: #fff;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  background-color: var(--card-bg-color);
+  color: var(--text-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   padding: 1.5rem;
+}
+
+.skills-card:hover {
+  background-color: var(--card-hover-bg);
 }
 
 .skill-item {
@@ -17,18 +28,19 @@
   transform: translateY(-6px);
   box-shadow: 0 8px 18px rgba(0,0,0,0.15);
   outline: none;
-  background: #e7f1ff;
+  background: #9b9a9a;
   border-radius: 10px;
   padding: 0.5rem 0;
 }
 
 .skill-icon {
-  color: var(--accent-color, #007bff);
+  color: var(--icon-color);
+  transition: color 0.3s;
 }
 
 .skill-name {
-  font-weight: 600;
+  font-weight: 500;
+  color: var(--text-color);
   font-size: 1rem;
-  color: #222;
   margin-top: 0.5rem;
 }

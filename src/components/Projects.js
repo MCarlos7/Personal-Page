@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Button, Container, Row, Col, Spinner, Alert } from 'react-bootstrap';
+import '../styles/Projects.css';
 
 const GITHUB_USERNAME = process.env.REACT_APP_GH_USER || 'MCarlos7';
 const GITHUB_TOKEN = process.env.REACT_APP_GH_TOKEN;
@@ -13,8 +14,8 @@ function Projects() {
     const fetchRepos = async () => {
       try {
         const resp = await fetch(
-          `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100`,
-          GITHUB_TOKEN ? { headers: { Authorization: `token ${GITHUB_TOKEN}` } } : {}
+          `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100`, 
+          GITHUB_TOKEN ? { headers: { Authorization: `token ${GITHUB_TOKEN}` } } : {} 
         );
         if (!resp.ok) throw new Error(`GitHub returned: ${resp.status}`);
         const data = await resp.json();
