@@ -19,7 +19,17 @@ function Projects() {
         );
         if (!resp.ok) throw new Error(`GitHub returned: ${resp.status}`);
         const data = await resp.json();
-        data.sort((a, b) => b.stargazers_count - a.stargazers_count); // ⭐ first
+
+        const priorityProjects = ['Anfitrion', 'EnergIA', 'Python-Compiler'];
+        data.sort((a, b) => {
+          const isAPriority = priorityProjects.some(p => a.name.includes(p));
+          const isBPriority = priorityProjects.some(p => b.name.includes(p));
+          
+          if (isAPriority && !isBPriority) return -1;
+          if (!isAPriority && isBPriority) return 1;
+          return b.stargazers_count - a.stargazers_count;
+        });
+        
         setRepos(data);
       } catch (err) {
         setError(err.message);
