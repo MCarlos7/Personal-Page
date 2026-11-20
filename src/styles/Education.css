@@ -1,0 +1,123 @@
+.education-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.75fr);
+  gap: clamp(38px, 8vw, 110px);
+  padding-top: 54px;
+}
+
+.education-main > .display-heading {
+  margin-bottom: 34px;
+}
+
+.education-card {
+  padding: clamp(20px, 3vw, 30px);
+  border: 1px solid color-mix(in srgb, var(--inverse-text) 28%, transparent);
+}
+
+.education-card-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  color: color-mix(in srgb, var(--inverse-text) 60%, transparent);
+  font-size: 0.62rem;
+}
+
+.education-icon {
+  width: 22px;
+  height: 22px;
+  margin-top: 43px;
+  color: var(--accent);
+}
+
+.education-card h3 {
+  margin: 13px 0 8px;
+  font-size: clamp(1.55rem, 3vw, 2.15rem);
+  letter-spacing: -0.065em;
+}
+
+.education-card > p {
+  max-width: 470px;
+  margin: 0;
+  color: color-mix(in srgb, var(--inverse-text) 68%, transparent);
+  font-size: 0.87rem;
+  line-height: 1.65;
+}
+
+.education-coursework {
+  margin-top: 30px;
+  padding-top: 18px;
+  border-top: 1px solid color-mix(in srgb, var(--inverse-text) 24%, transparent);
+}
+
+.education-coursework > span,
+.interests > span {
+  color: color-mix(in srgb, var(--inverse-text) 53%, transparent);
+  font-size: 0.62rem;
+}
+
+.education-coursework > p {
+  margin: 10px 0 0;
+  color: var(--inverse-text);
+  font-size: 0.82rem;
+  line-height: 1.7;
+}
+
+.education-extras {
+  padding-top: 8px;
+}
+
+.education-extras > .eyebrow {
+  margin-bottom: 24px;
+  color: color-mix(in srgb, var(--inverse-text) 75%, transparent);
+}
+
+.extra-item {
+  display: grid;
+  grid-template-columns: 26px 1fr;
+  gap: 13px;
+  padding-block: 17px;
+  border-bottom: 1px solid color-mix(in srgb, var(--inverse-text) 24%, transparent);
+}
+
+.extra-item > svg {
+  width: 17px;
+  height: 17px;
+  margin-top: 2px;
+  color: var(--accent);
+}
+
+.extra-item h3 {
+  margin: 0 0 5px;
+  font-size: 0.9rem;
+  letter-spacing: -0.025em;
+}
+
+.extra-item p {
+  margin: 0;
+  color: color-mix(in srgb, var(--inverse-text) 62%, transparent);
+  font-size: 0.77rem;
+  line-height: 1.6;
+}
+
+.interests {
+  padding-top: 21px;
+}
+
+.interests > p {
+  margin: 9px 0 0;
+  color: color-mix(in srgb, var(--inverse-text) 76%, transparent);
+  font-size: 0.79rem;
+  line-height: 1.7;
+}
+
+@media (max-width: 760px) {
+  .education-layout {
+    grid-template-columns: 1fr;
+    gap: 46px;
+    padding-top: 40px;
+  }
+
+  .education-card-top {
+    flex-direction: column;
+  }
+}

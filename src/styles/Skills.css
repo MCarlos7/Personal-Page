@@ -1,46 +1,73 @@
-#skills {
-  background-color: var(--background-color);
-  color: var(--text-color);
-  transition: background-color 0.3s, color 0.3s;
+.skills-intro {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 36px;
+  padding-block: 55px 48px;
 }
 
-.skills-card {
-  border-radius: 12px;
-  background-color: var(--card-bg-color);
-  color: var(--text-color);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  padding: 1.5rem;
+.skills-intro .display-heading {
+  max-width: 780px;
 }
 
-.skills-card:hover {
-  background-color: var(--card-hover-bg);
+.skills-intro > p {
+  max-width: 260px;
+  margin: 0 0 5px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.7;
 }
 
-.skill-item {
-  text-align: center;
-  cursor: default;
-  transition: transform 0.2s ease;
+.skill-groups {
+  border-top: 1px solid var(--line);
 }
 
-.skill-item:hover,
-.skill-item:focus {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 18px rgba(0,0,0,0.15);
-  outline: none;
-  background: #9b9a9a;
-  border-radius: 10px;
-  padding: 0.5rem 0;
+.skill-group {
+  display: grid;
+  grid-template-columns: 55px minmax(170px, 0.55fr) minmax(0, 1.2fr);
+  gap: 22px;
+  align-items: start;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
 }
 
-.skill-icon {
-  color: var(--icon-color);
-  transition: color 0.3s;
+.skill-number {
+  padding-top: 4px;
+  color: var(--muted);
 }
 
-.skill-name {
-  font-weight: 500;
-  color: var(--text-color);
+.skill-group h3 {
+  margin: 0;
   font-size: 1rem;
-  margin-top: 0.5rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.skill-group .tag-list {
+  gap: 7px;
+}
+
+@media (max-width: 760px) {
+  .skills-intro {
+    display: block;
+    padding-block: 40px 32px;
+  }
+
+  .skills-intro > p {
+    margin-top: 20px;
+  }
+
+  .skill-group {
+    grid-template-columns: 36px 1fr;
+    gap: 9px 12px;
+    padding-block: 19px;
+  }
+
+  .skill-group h3 {
+    grid-column: 2;
+  }
+
+  .skill-group .tag-list {
+    grid-column: 2;
+  }
 }

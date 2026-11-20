@@ -1,44 +1,59 @@
 import React from 'react';
-import { Container, Card, Row, Col } from 'react-bootstrap';
-// Importamos iconos más específicos de tu stack actual
-import { DiPython, DiJavascript, DiReact, DiNodejs, DiGit } from 'react-icons/di';
-import { SiNextdotjs, SiTailwindcss, SiSupabase, SiPrisma, SiCplusplus, SiArduino } from 'react-icons/si';
 import '../styles/Skills.css';
 
-const skills = [
-  // Core & Web Moderno
-  { name: 'Next.js', icon: <SiNextdotjs size={50} /> },
-  { name: 'React', icon: <DiReact size={50} /> },
-  { name: 'Tailwind CSS', icon: <SiTailwindcss size={50} /> },
-  { name: 'JavaScript', icon: <DiJavascript size={50} /> },
-  
-  // Backend & Data
-  { name: 'Supabase', icon: <SiSupabase size={50} /> },
-  { name: 'Prisma', icon: <SiPrisma size={50} /> },
-  { name: 'NodeJS', icon: <DiNodejs size={50} /> },
-  
-  // Ingeniería & IA
-  { name: 'Python (AI/ML)', icon: <DiPython size={50} /> },
-  { name: 'C++', icon: <SiCplusplus size={50} /> },
-  { name: 'IoT / Arduino', icon: <SiArduino size={50} /> },
-  { name: 'Git', icon: <DiGit size={50} /> },
+const skillGroups = [
+  {
+    number: '01',
+    title: 'Lenguajes',
+    skills: ['JavaScript', 'TypeScript', 'Java', 'Python', 'C', 'C++', 'C#', 'SQL'],
+  },
+  {
+    number: '02',
+    title: 'Frontend & mobile',
+    skills: ['React', 'Next.js', 'Tailwind CSS', 'Bootstrap', 'Flutter'],
+  },
+  {
+    number: '03',
+    title: 'Backend & datos',
+    skills: ['Node.js', 'Prisma', 'Supabase', 'PostgreSQL', 'MongoDB'],
+  },
+  {
+    number: '04',
+    title: 'Herramientas & conceptos',
+    skills: ['Git', 'GitHub', 'Figma', 'Scikit-learn', 'OpenMP'],
+  },
+  {
+    number: '05',
+    title: 'Otros intereses técnicos',
+    skills: ['Linux', 'Docker', 'Unity', 'Blender'],
+  },
 ];
 
 function Skills() {
   return (
-    <Container id="skills" className="mb-5">
-      <h2 className="text-center mb-4 display-6 fw-bold">TechStack and Tools</h2>
-      <Card className="p-4 shadow border-0 rounded-4 skills-card">
-        <Row className="justify-content-center g-4">
-          {skills.map((skill, index) => (
-            <Col key={index} xs={6} sm={4} md={3} lg={2} className="d-flex flex-column align-items-center skill-item">
-              <div className="skill-icon text-primary">{skill.icon}</div>
-              <div className="skill-name mt-2 fw-semibold">{skill.name}</div>
-            </Col>
-          ))}
-        </Row>
-      </Card>
-    </Container>
+    <section className="content-section section-wrap" id="skills">
+      <div className="section-heading">
+        <p className="eyebrow"><span className="eyebrow-mark" /> 03 — CAJA DE HERRAMIENTAS</p>
+        <span className="section-index">03</span>
+      </div>
+
+      <div className="skills-intro">
+        <h2 className="display-heading">Tecnología al servicio<span>de una buena idea.</span></h2>
+        <p>Un stack diverso para elegir la herramienta correcta según el problema.</p>
+      </div>
+
+      <div className="skill-groups">
+        {skillGroups.map((group) => (
+          <article className="skill-group" key={group.number}>
+            <span className="skill-number">{group.number}</span>
+            <h3>{group.title}</h3>
+            <ul className="tag-list">
+              {group.skills.map((skill) => <li key={skill}>{skill}</li>)}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </section>
   );
 }
 

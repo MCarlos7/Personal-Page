@@ -1,39 +1,105 @@
-/* styles/Contact.css */
-#contact {
-  background-color: var(--background-color);
-  color: var(--text-color);
-  transition: background-color 0.3s, color 0.3s;
+.contact-section {
+  padding-bottom: 45px;
+}
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.8fr);
+  gap: clamp(45px, 9vw, 130px);
+  padding-block: 62px 76px;
+}
+
+.contact-copy .display-heading {
+  font-size: clamp(3.3rem, 7.5vw, 6.8rem);
+}
+
+.contact-copy > p {
+  max-width: 450px;
+  margin: 25px 0;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.75;
 }
 
 .contact-list {
-  background-color: transparent;
+  align-self: center;
+  border-top: 1px solid var(--line);
 }
 
-.contact-list .list-group-item {
-  background-color: var(--card-bg-color);
-  color: var(--text-color);
-  border: none;
-  border-radius: 8px;
-  margin-bottom: 0.5rem;
-  transition: background-color 0.3s ease, color 0.3s ease;
+.contact-item {
+  display: grid;
+  min-height: 67px;
+  grid-template-columns: 36px 85px minmax(0, 1fr) 18px;
+  gap: 10px;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  transition: padding 160ms ease, background-color 160ms ease;
 }
 
-.contact-list .list-group-item:hover {
-  background-color: var(--card-hover-bg);
+.contact-item:hover {
+  padding-inline: 8px;
+  background: var(--surface);
 }
 
-.contact-link {
-  color: var(--accent-color);
-  text-decoration: none;
-  transition: color 0.2s ease;
+.contact-icon {
+  display: grid;
+  width: 29px;
+  height: 29px;
+  place-items: center;
+  border: 1px solid var(--line);
 }
 
-.contact-link:hover,
-.contact-link:focus {
-  text-decoration: underline;
-  color: var(--accent-color);
+.contact-icon svg,
+.contact-arrow {
+  width: 15px;
+  height: 15px;
 }
 
-#contact p {
-  color: var(--text-muted-color);
+.contact-label {
+  color: var(--muted);
+  font-size: 0.76rem;
+}
+
+.contact-value {
+  overflow-wrap: anywhere;
+  font-size: 0.83rem;
+  font-weight: 650;
+}
+
+.contact-arrow {
+  justify-self: end;
+  color: var(--muted);
+  transition: transform 160ms ease;
+}
+
+.contact-item:hover .contact-arrow {
+  color: var(--text);
+  transform: translate(2px, -2px);
+}
+
+.contact-bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  padding-top: 17px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.62rem;
+}
+
+@media (max-width: 760px) {
+  .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding-block: 42px 50px;
+  }
+
+  .contact-item {
+    grid-template-columns: 32px 75px minmax(0, 1fr) 16px;
+    gap: 7px;
+  }
+
+  .contact-bottom {
+    flex-direction: column;
+  }
 }

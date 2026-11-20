@@ -1,25 +1,82 @@
-/* About.css */
-.about-section {
-background-color: var(--background-color);
-  color: var(--text-color);
-  transition: background-color 0.3s ease, color 0.3s ease;
-  padding: 4rem 2rem;
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: center;
-  color: var(--text-color);
+.about-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.7fr);
+  gap: clamp(35px, 9vw, 140px);
+  padding-block: 58px 72px;
 }
 
-.about-title {
-  font-size: 2.5rem;
-  margin-bottom: 1.5rem;
-  font-weight: 700;
-  color: var(--accent-color, #007bff);
+.about-copy {
+  max-width: 510px;
+  padding-top: 7px;
 }
 
-.about-description {
-  font-size: 1.1rem;
+.about-copy p {
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-size: 0.97rem;
   line-height: 1.8;
-  color: var(--text-color, #333);
 }
 
+.about-copy .about-lead {
+  color: var(--text);
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.about-copy .text-link {
+  margin-top: 8px;
+}
+
+.about-facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--line);
+}
+
+.about-facts > div {
+  display: grid;
+  grid-template-columns: 35px 1fr;
+  gap: 5px 11px;
+  padding: 20px 14px 0 0;
+}
+
+.about-facts > div + div {
+  padding-left: 20px;
+  border-left: 1px solid var(--line);
+}
+
+.about-facts span {
+  grid-row: span 2;
+  color: var(--muted);
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 0.69rem;
+}
+
+.about-facts strong {
+  font-size: 0.88rem;
+}
+
+.about-facts small {
+  color: var(--muted);
+  font-size: 0.76rem;
+}
+
+@media (max-width: 760px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding-block: 40px 48px;
+  }
+
+  .about-facts {
+    grid-template-columns: 1fr;
+  }
+
+  .about-facts > div,
+  .about-facts > div + div {
+    padding: 15px 0;
+    border-left: 0;
+    border-bottom: 1px solid var(--line);
+  }
+}
